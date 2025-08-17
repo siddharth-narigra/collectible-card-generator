@@ -311,30 +311,3 @@ if theme.lower() in ["fantasy", "medieval", "magic"]:
 elif theme.lower() in ["sci-fi", "science fiction", "futuristic", "space"]:
     card_types = ["robot", "tech", "weapon", "vehicle", "alien"]
 ```
-
-## License
-
-This project is open source. Feel free to modify and distribute.
-
-## Contributing
-
-Contributions are welcome! Areas for improvement:
-
-- Additional card templates and themes
-- More sophisticated AI prompts
-- Better error handling
-- Card game rule generators
-- Export to different formats
-- Print-ready layouts
-
-## Version History
-
-- **v3.0.0**: Added multiple card templates (Classic and Swiss Design)
-- **v2.1.0**: Updated card design based on classic trading card aesthetics
-- **v2.0.0**: Added HTML/CSS card templates and professional card design
-- **v1.0.0**: Initial release with GUI and basic card generation
-
----
-
-**Enjoy creating your custom card games with multiple design options!** 🎮✨
-
