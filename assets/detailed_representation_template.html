@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Game Card - Detailed Representation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --outer-bg: #c1c1c1;
+    --frame-dark: #7d7d7d;
+    --frame-light: #9e9e9e;
+    --bevel-highlight: rgba(255, 255, 255, 0.2);
+    --bevel-shadow: rgba(0, 0, 0, 0.5);
+    --image-placeholder-bg: #d1d1d1;
+    --text-color: #3a3a3a;
+}
+
+body {
+    background: #333840;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.card {
+    width: 428px;
+    height: 571px;
+    background: var(--outer-bg);
+    border-radius: 20px;
+    padding: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 2px var(--bevel-highlight);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* General Frame Styling */
+.frame {
+    background: linear-gradient(145deg, var(--frame-light), var(--frame-dark));
+    border: 1px solid #666;
+    box-shadow: inset 0 2px 4px var(--bevel-shadow), 0 2px 2px var(--bevel-highlight);
+}
+
+/* Top Name Bar */
+.name-bar {
+    height: 45px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.name-bar-inner {
+    width: 100%;
+    height: 25px;
+    background: linear-gradient(180deg, #e0e0e0, #c0c0c0);
+    border-radius: 5px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name-text {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text-color);
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+/* Main Image Area */
+.image-container {
+    flex-grow: 1;
+    border-radius: 25px;
+    padding: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Ornate Side Decorations */
+.image-container::before, .image-container::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    width: 25px;
+    background: linear-gradient(to bottom, #a8a8a8, #8c8c8c 20%, #a8a8a8 30%, #8c8c8c 40%, #a8a8a8 50%, #8c8c8c 60%, #a8a8a8 70%, #8c8c8c 80%, #a8a8a8);
+    border-top: 1px solid #666;
+    border-bottom: 1px solid #666;
+    box-shadow: inset 0 2px 4px var(--bevel-shadow);
+}
+.image-container::before {
+    left: 10px;
+    border-left: 1px solid #666;
+    border-radius: 15px 0 0 15px;
+}
+.image-container::after {
+    right: 10px;
+    border-right: 1px solid #666;
+    border-radius: 0 15px 15px 0;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: var(--image-placeholder-bg);
+    border-radius: 20px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+}
+
+.character-image-element {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Bottom Description Box */
+.description-box {
+    height: 160px; /* Increased height for stats */
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.description-top-bar {
+    height: 25px;
+    background: linear-gradient(145deg, #b0b0b0, #8e8e8e);
+    border-radius: 5px;
+    box-shadow: inset 0 2px 3px var(--bevel-shadow);
+}
+
+.description-main-area {
+    flex-grow: 1;
+    background: #e0e0e0;
+    border-radius: 5px;
+    margin-top: 8px;
+    padding: 10px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column; /* Changed to stack description and stats */
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.description-text {
+    flex-grow: 1;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.4;
+}
+
+/* Container for all the stats */
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+/* Individual stat item */
+.stat-item {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(145deg, #c8c8c8, #a8a8a8);
+    border-radius: 10px;
+    border: 1px solid #888;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2px;
+}
+
+.stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-color);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <div class="name-bar frame">
+        <div class="name-bar-inner">
+            <span class="name-text">
+                {{CARD_NAME}}
+            </span>
+        </div>
+    </div>
+
+    <div class="image-container frame">
+        <div class="image-placeholder" id="card-image-container">
+            <img src="{{CARD_IMAGE_URL}}" alt="Card Image" class="character-image-element">
+        </div>
+    </div>
+
+    <div class="description-box frame">
+        <div class="description-top-bar"></div>
+        <div class="description-main-area">
+            <p class="description-text" id="card-description">
+                {{CARD_DESCRIPTION}}
+            </p>
+            <div class="stats-container" id="stats-container">
+                {{CARD_STATS}}
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+

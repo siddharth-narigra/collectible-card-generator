@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swiss Design Card Template</title>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap");
+
+:root {
+    --background-color: #f0f0f0;
+    --text-color: #111111;
+    --accent-color: #e63946;
+    --border-color: #dddddd;
+    --black: #000000;
+    --white: #ffffff;
+}
+
+body {
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+.card {
+    width: 428px;
+    height: 571px;
+    background: var(--background-color);
+    border-radius: 0; /* Sharp corners for Swiss design */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two main columns */
+    grid-template-rows: auto 1fr auto; /* Name, main content, stats */
+    padding: 25px;
+    box-sizing: border-box;
+    gap: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+/* === NAME AREA === */
+.card-name-area {
+    grid-column: 1 / -1; /* Span both columns */
+    font-size: 36px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--text-color);
+    letter-spacing: 1px;
+    line-height: 1.1;
+    border-bottom: 4px solid var(--text-color);
+    padding-bottom: 10px;
+}
+
+/* === IMAGE AREA === */
+.card-image-area {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    background: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* === DESCRIPTION & INFO AREA === */
+.card-info-area {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.card-description-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-color);
+    font-weight: 400;
+    text-align: justify;
+}
+
+.card-type-rarity {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card-type-display {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    letter-spacing: 1px;
+}
+
+.card-rarity-display {
+    font-size: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* === STATS BAR === */
+.stats-area {
+    grid-column: 1 / -1; /* Span both columns */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.stat-item {
+    text-align: left;
+}
+
+.stat-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.stat-value {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--accent-color);
+    line-height: 1;
+}
+
+/* Card Number */
+.card-number-display {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--text-color);
+    opacity: 0.5;
+}
+
+</style>
+</head>
+<body>
+
+<div class="card">
+    <div class="card-name-area">{{CARD_NAME}}</div>
+
+    <div class="card-image-area">
+        <img src="{{CARD_IMAGE_URL}}" alt="Card Artwork" class="card-image">
+    </div>
+
+    <div class="card-info-area">
+        <div class="card-description-text">
+            {{CARD_DESCRIPTION}}
+        </div>
+        
+        <div class="card-type-rarity">
+            <div class="card-type-display">{{CARD_TYPE}}</div>
+            <div class="card-rarity-display">{{CARD_RARITY}}</div>
+        </div>
+    </div>
+
+    <div class="stats-area">
+        {{CARD_STATS}}
+    </div>
+
+    <div class="card-number-display">#{{CARD_NUMBER}}</div>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Game Card - Bright Swiss Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
+<style>
+:root {
+    --red: #e63946;
+    --yellow: #ffc300;
+    --blue: #1d3557;
+    --black: #1a1a1a;
+    --white: #f1faee;
+}
+
+body {
+    background: #2c2f36;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.card {
+    width: 428px;
+    height: 571px;
+    background: var(--white);
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    overflow: hidden;
+}
+
+/* === HEADER (Name) === */
+.card-header {
+    grid-column: 1 / -1; /* Spans full width */
+    background-color: var(--yellow);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.card-name {
+    font-size: 52px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--black);
+    line-height: 1;
+    text-align: left;
+}
+
+/* === IMAGE AREA === */
+.image-area {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+    background-color: var(--black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.character-image-element {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: luminosity;
+    filter: grayscale(1) contrast(1.5);
+    transition: all 0.4s ease;
+}
+
+.card:hover .character-image-element {
+    mix-blend-mode: normal;
+    filter: grayscale(0) contrast(1);
+}
+
+/* === FOOTER (Stats & Desc) === */
+.card-footer {
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1.5fr;
+    gap: 20px;
+    align-items: center;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.stat {
+    text-align: left;
+}
+
+.stat-label {
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+.stat-value {
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--red);
+    line-height: 1;
+}
+
+.card-description {
+    font-size: 12px;
+    line-height: 1.6;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+</style>
+</head>
+<body>
+
+<div class="card">
+    <div class="card-header">
+        <div id="card-name" class="card-name">{{CARD_NAME}}</div>
+    </div>
+
+    <div class="image-area" id="card-image-container">
+        <img src="{{CARD_IMAGE_URL}}" alt="Card Image" class="character-image-element">
+    </div>
+
+    <div class="card-footer">
+        <div id="stats-container" class="stats">{{CARD_STATS}}</div>
+        <p id="card-description" class="card-description">{{CARD_DESCRIPTION}}</p>
+    </div>
+</div>
+
+</body>
+</html>
+
+
