@@ -20,6 +20,43 @@ A Python application that generates custom trading card games using AI. Provide 
 - **GUI and CLI**: Graphical interface for casual use, command line for scripting
 - **Complete Output**: Generates card images, JSON data, and basic game rules
 
+## Architecture
+
+```mermaid
+flowchart TB
+    subgraph Input
+        USER[User] --> |theme, count, template| MAIN[main.py]
+    end
+
+    subgraph Application
+        MAIN --> GUI[gui.py]
+        MAIN --> CLI[card_generator.py]
+        GUI --> GEN[card_generator.py]
+        CLI --> GEN
+        GEN --> HTML[html_card_generator.py]
+    end
+
+    subgraph External APIs
+        GEN --> |prompt| TEXT_API[Pollinations Text API]
+        TEXT_API --> |name, stats, description| GEN
+        GEN --> |image prompt| IMG_API[Pollinations Image API]
+        IMG_API --> |artwork PNG| GEN
+    end
+
+    subgraph Rendering
+        HTML --> |card data + artwork| TEMPLATE[HTML/CSS Templates]
+        TEMPLATE --> WKHTML[wkhtmltoimage]
+        WKHTML --> |card PNG| OUTPUT
+    end
+
+    subgraph Output
+        GEN --> OUTPUT[ZIP File]
+        OUTPUT --> CARDS[Card Images]
+        OUTPUT --> JSON[Card JSON Data]
+        OUTPUT --> RULES[Game Rules]
+    end
+```
+
 ## Installation
 
 ### Prerequisites
@@ -169,4 +206,4 @@ collectible-card-generator/
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) for details.
+MIT License
