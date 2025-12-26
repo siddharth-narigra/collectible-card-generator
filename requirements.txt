@@ -1,3 +1,8 @@
-requests>=2.25.0
-Pillow>=8.0.0
+# Card Game Generator - Python Dependencies
+# Install with: pip install -r requirements.txt
 
+# HTTP library for API calls
+requests>=2.25.0
+
+# Image processing (for fallback operations)
+Pillow>=8.0.0

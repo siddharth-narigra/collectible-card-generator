@@ -1,48 +1,52 @@
 #!/usr/bin/env python3
 """
-Card Game Generator - Main Launcher
-===================================
+Card Game Generator - Application Entry Point
 
-This is the main entry point for the Card Game Generator application.
-Run this script to start the GUI application.
+A Python application that generates custom trading card games using AI.
+Launch this script to start the graphical user interface.
 
 Usage:
     python main.py
 
 Requirements:
-    - Python 3.7+
+    - Python 3.10+
     - tkinter (usually included with Python)
     - requests
-    - Pillow (optional, for image processing)
-
-Author: Card Game Generator Team
-Version: 1.0.0
+    - wkhtmltopdf (system dependency)
 """
 
 import sys
-import os
+from pathlib import Path
 
-# Add src directory to Python path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
+# Add src directory to Python path for imports
+src_path = Path(__file__).parent / "src"
+sys.path.insert(0, str(src_path))
 
-try:
-    from src.gui import main
-    
-    if __name__ == "__main__":
-        print("Starting Card Game Generator...")
-        print("=" * 50)
-        print("Welcome to the Card Game Generator!")
-        print("This application will help you create custom card games")
-        print("based on any theme you choose.")
-        print("=" * 50)
-        main()
+
+def main() -> None:
+    """Application entry point."""
+    try:
+        from gui import main as gui_main
         
-except ImportError as e:
-    print(f"Error importing required modules: {e}")
-    print("Please make sure all dependencies are installed.")
-    print("Run: pip install -r requirements.txt")
-    sys.exit(1)
-except Exception as e:
-    print(f"Error starting application: {e}")
-    sys.exit(1)
+        print("=" * 50)
+        print("  Card Game Generator")
+        print("=" * 50)
+        print("Starting application...")
+        print()
+        
+        gui_main()
+        
+    except ImportError as e:
+        print(f"Error: Missing required module - {e}")
+        print()
+        print("Please install dependencies:")
+        print("  pip install -r requirements.txt")
+        sys.exit(1)
+        
+    except Exception as e:
+        print(f"Error: {e}")
+        sys.exit(1)
 
+
+if __name__ == "__main__":
+    main()
